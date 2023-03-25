@@ -1,0 +1,22 @@
+{
+  "name": "class_4",
+  "version": "1.0.0",
+  "description": "Creating a server with Express.js",
+  "main": "main.js",
+  "scripts": {
+    "dev": "nodemon main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "JavaScript",
+    "Node.js",
+    "Express.js",
+    "Back-end"
+  ],
+  "author": "Cesar David Millan",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22"
+  }
+}
