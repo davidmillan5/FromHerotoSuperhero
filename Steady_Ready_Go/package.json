@@ -1,0 +1,27 @@
+{
+  "name": "steady_ready_go",
+  "version": "1.0.0",
+  "description": "Midterm project, creating an API REST with Express.js",
+  "main": "main.js",
+  "scripts": {
+    "dev": "nodemon main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Javascript",
+    "Node.js",
+    "Express.js",
+    "NPM",
+    "API",
+    "REST",
+    "Back-End",
+    "Server"
+  ],
+  "author": "Cesar David Millan",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "http-status-codes": "^2.2.0",
+    "nodemon": "^2.0.22"
+  }
+}
