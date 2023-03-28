@@ -4,23 +4,24 @@ const port = 3000,
   express = require('express'),
   app = express(),
   fs = require('fs'),
-  path = require('path');
+  path = require('path'),
+  databaseModule = require('./modules/databaseCreator.js'),
+  databaseName = 'database',
+  objectName = 'products';
 
-const createDatabase = () => {
-  if (!fs.existsSync('database.txt')) {
-    fs.appendFile('database.txt', 'products:{}', function (err) {
-      if (err) throw err;
-      console.log('database Created');
-    });
-  }
-};
+databaseModule.createDatabase(databaseName, objectName);
 
-createDatabase();
-
-const database = fs.readFileSync(path.join(__dirname, 'database.txt'), 'utf-8');
+const database = fs.readFileSync(
+  path.join(__dirname, `${databaseName}.txt`),
+  'utf-8'
+);
 
 app.get('/', (req, res) => {
   res.send(database);
+});
+
+app.get('/api/v1/products', (req, res) => {
+  res.json(database);
 });
 
 app.listen(port, () => {
