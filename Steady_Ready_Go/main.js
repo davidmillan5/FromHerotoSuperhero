@@ -13,7 +13,7 @@ const port = 3000,
 app.use(express.json());
 databaseModule.createDatabase(databaseName, objectName);
 
-let database = fs.readFile(
+let database = fs.readFileSync(
   path.join(__dirname, `${databaseName}.txt`),
   'utf-8',
   (err, data) => {
@@ -23,11 +23,13 @@ let database = fs.readFile(
 );
 
 app.get('/', (req, res) => {
-  res.json(database);
+  res.send('The Database is online...');
 });
 
 app.get('/api/v1/products', (req, res) => {
-  res.json(database);
+  console.log('List of Products');
+  console.log(database);
+  res.send(database);
 });
 
 app.post('/api/v1/products/', (req, res) => {
