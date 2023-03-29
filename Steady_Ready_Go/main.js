@@ -6,18 +6,23 @@ const port = 3000,
   fs = require('fs'),
   path = require('path'),
   databaseModule = require('./modules/databaseCreator.js'),
+  appendModule = require('./modules/appendModule.js'),
   databaseName = 'database',
   objectName = 'products';
 
 databaseModule.createDatabase(databaseName, objectName);
 
-const database = fs.readFileSync(
+let database = fs.readFileSync(
   path.join(__dirname, `${databaseName}.txt`),
-  'utf-8'
+  'utf-8',
+  (err, data) => {
+    if (err) throw err;
+    console.log(data);
+  }
 );
 
 app.get('/', (req, res) => {
-  res.send(database);
+  res.json(database);
 });
 
 app.get('/api/v1/products', (req, res) => {
