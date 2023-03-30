@@ -6,7 +6,6 @@ const port = 3000,
   fs = require('fs'),
   path = require('path'),
   databaseModule = require('./modules/databaseCreator.js'),
-  appendModule = require('./modules/appendModule.js'),
   databaseName = 'database',
   objectName = 'products';
 
@@ -27,14 +26,16 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/v1/products', (req, res) => {
-  console.log('List of Products');
+  // console.log('List of Products');
+  // console.log(database);
+  console.log('Query completed');
   console.log(database);
   res.send(database);
 });
 
 app.post('/api/v1/products/', (req, res) => {
   const product = req.body;
-  fs.appendFile(
+  fs.appendFileSync(
     path.join(__dirname, `${databaseName}.txt`),
     JSON.stringify(product),
     (err) => {
@@ -42,8 +43,15 @@ app.post('/api/v1/products/', (req, res) => {
       console.log('Append Completed');
     }
   );
-  res.json(database);
+  res.send(database);
 });
+
+// app.get('/api/v1/products/:productId', (req, res) => {
+//   const { productId } = req.params;
+//   const database = database.find((product) => product.id === productId);
+//   // console.log(req.params);
+//   res.json(product);
+// });
 
 app.listen(port, () => {
   console.log(`Listening in http://localhost:${port}`);
