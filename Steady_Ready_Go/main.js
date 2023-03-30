@@ -35,7 +35,7 @@ app.get('/api/v1/products', (req, res) => {
 
 app.post('/api/v1/products/', (req, res) => {
   const product = req.body;
-  fs.appendFileSync(
+  fs.appendFile(
     path.join(__dirname, `${databaseName}.txt`),
     JSON.stringify(product),
     (err) => {
