@@ -1,9 +1,10 @@
 'use strict';
 
-const port = 3000,
+const port = process.env.PORT || 3000,
   express = require('express'),
   app = express(),
   fs = require('fs'),
+  Joi = require('joi'),
   path = require('path'),
   databaseModule = require('./modules/databaseCreator.js'),
   databaseName = 'database',
