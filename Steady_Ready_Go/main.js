@@ -23,6 +23,8 @@ let database = fs.readFileSync(
   }
 );
 
+const productsArray = [];
+
 app.get('/', (req, res) => {
   res.send('The Database is online...');
 });
@@ -34,16 +36,10 @@ app.get('/api/v1/products', (req, res) => {
 });
 
 app.post('/api/v1/products/', (req, res) => {
-  // const { error } = validator.validateCourse(req.body);
-
-  // if (error) {
-  //   return res.status(400).send(error.details[0].message);
-  // }
-
   const product = req.body;
-  fs.appendFile(
+  fs.appendFileSync(
     path.join(__dirname, `${databaseName}.txt`),
-    JSON.stringify(product),
+    JSON.stringify(product, null, 2),
     (err) => {
       if (err) throw err;
       console.log('Append Completed');
@@ -52,12 +48,9 @@ app.post('/api/v1/products/', (req, res) => {
   res.send(database);
 });
 
-// app.get('/api/v1/products/:productId', (req, res) => {
-//   const { productId } = req.params;
-//   const database = database.find((product) => product.id === productId);
-//   // console.log(req.params);
-//   res.json(product);
-// });
+app.get('/api/v1/products/:productId', (req, res) => {
+  res.json(product);
+});
 
 app.listen(port, () => {
   console.log(`Listening in http://localhost:${port}`);
