@@ -8,11 +8,10 @@ const port = process.env.PORT || 3000,
   path = require('path'),
   databaseModule = require('./modules/databaseCreator.js'),
   validator = require('./modules/productsValidator.js'),
-  databaseName = 'database',
-  objectName = 'products';
+  databaseName = 'database';
 
 app.use(express.json());
-databaseModule.createDatabase(databaseName, objectName);
+databaseModule.createDatabase(databaseName);
 
 let database = fs.readFileSync(
   path.join(__dirname, `${databaseName}.txt`),
@@ -44,7 +43,15 @@ app.post('/api/v1/products/', (req, res) => {
       if (err) throw err;
       console.log('Append Completed');
     }
-  );
+  ),
+    fs.appendFileSync(
+      path.join(__dirname, `${databaseName}.txt`),
+      ',',
+      (err) => {
+        if (err) throw err;
+        console.log('Append Completed');
+      }
+    );
   res.send(database);
 });
 
