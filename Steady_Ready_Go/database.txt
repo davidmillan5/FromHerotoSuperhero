@@ -1,8 +1,18 @@
 {
-  "id": 6,
-  "name": "Nintendo Wii",
+  "id": 1,
+  "name": "Nintendo Switch",
   "description": "",
-  "price": 260,
-  "Available Units": 7,
+  "price": 360,
+  "Available Units": 1,
   "category": "Video Games"
 },
+
+{
+  "id": 2,
+  "name": "Gameboy Advanced",
+  "description": "",
+  "price": 160,
+  "Available Units": 1,
+  "category": "Video Games"
+},
+

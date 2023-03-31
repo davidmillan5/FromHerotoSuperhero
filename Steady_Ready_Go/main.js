@@ -22,7 +22,7 @@ let database = fs.readFileSync(
   }
 );
 
-const productsArray = [];
+const products = [];
 
 app.get('/', (req, res) => {
   res.send('The Database is online...');
@@ -46,7 +46,7 @@ app.post('/api/v1/products/', (req, res) => {
   ),
     fs.appendFileSync(
       path.join(__dirname, `${databaseName}.txt`),
-      ',',
+      ',\n\n',
       (err) => {
         if (err) throw err;
         console.log('Append Completed');
@@ -56,8 +56,18 @@ app.post('/api/v1/products/', (req, res) => {
 });
 
 app.get('/api/v1/products/:productId', (req, res) => {
-  res.json(product);
+  //*TODO
 });
+
+/**
+ *
+ * let array = fs.readFileSync('database.txt').toString().split('\n');
+ * for (let i in array) {
+ * console.log(array[i]);
+ * }
+ *
+ *
+ */
 
 app.listen(port, () => {
   console.log(`Listening in http://localhost:${port}`);
