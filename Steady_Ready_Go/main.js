@@ -27,8 +27,6 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/v1/products', (req, res) => {
-  // console.log('List of Products');
-  // console.log(database);
   console.log('Query completed');
   console.log(database);
   res.send(database);
