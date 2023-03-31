@@ -7,6 +7,7 @@ const port = process.env.PORT || 3000,
   Joi = require('joi'),
   path = require('path'),
   databaseModule = require('./modules/databaseCreator.js'),
+  validator = require('./modules/productsValidator.js'),
   databaseName = 'database',
   objectName = 'products';
 
@@ -33,6 +34,12 @@ app.get('/api/v1/products', (req, res) => {
 });
 
 app.post('/api/v1/products/', (req, res) => {
+  // const { error } = validator.validateCourse(req.body);
+
+  // if (error) {
+  //   return res.status(400).send(error.details[0].message);
+  // }
+
   const product = req.body;
   fs.appendFile(
     path.join(__dirname, `${databaseName}.txt`),

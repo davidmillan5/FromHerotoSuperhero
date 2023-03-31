@@ -1,3 +1,0 @@
-products = [
-
-]{"id":3,"name":"Nintendo Switch","quantity":1,"brand":"Nintendo","price":400}{"id":2,"name":"Nintendo Wii","quantity":1,"brand":"Nintendo","price":350}{"id":1,"name":"Nintendo 64","quantity":1,"brand":"Nintendo","price":150}{"id":4,"name":"Gameboy Advanced","quantity":1,"brand":"Nintendo","price":150}{"id":7,"name":"Gameboy Advanced","description":"","price":120,"Available Units":5,"category":"Video Games"}{"id":7,"name":"Gameboy Advanced SP","description":"","price":160,"Available Units":5,"category":"Video Games"}
