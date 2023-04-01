@@ -35,3 +35,4 @@ Para practicar lo que llevamos del curso la idea es tomar todo lo que han hecho.
   código de estatus de error y cuando pase la validación debe funcionar como se describió anteriormente.
 
 ![Logo](/Steady_Ready_Go/Ready_Steady_Go_IMG.png)
+

@@ -8,7 +8,8 @@ const port = process.env.PORT || 3000,
   path = require('path'),
   databaseModule = require('./modules/databaseCreator.js'),
   validator = require('./modules/productsValidator.js'),
-  databaseName = 'database';
+  databaseName = 'database',
+  arrayName = 'products';
 
 app.use(express.json());
 databaseModule.createDatabase(databaseName);
@@ -18,11 +19,9 @@ let database = fs.readFileSync(
   'utf-8',
   (err, data) => {
     if (err) throw err;
-    console.log(data);
+    console.log(JSON.parse(data));
   }
 );
-
-const products = [];
 
 app.get('/', (req, res) => {
   res.send('The Database is online...');
@@ -36,7 +35,7 @@ app.get('/api/v1/products', (req, res) => {
 
 app.post('/api/v1/products/', (req, res) => {
   const product = req.body;
-  fs.appendFileSync(
+  fs.appendFile(
     path.join(__dirname, `${databaseName}.txt`),
     JSON.stringify(product, null, 2),
     (err) => {
@@ -44,7 +43,7 @@ app.post('/api/v1/products/', (req, res) => {
       console.log('Append Completed');
     }
   ),
-    fs.appendFileSync(
+    fs.appendFile(
       path.join(__dirname, `${databaseName}.txt`),
       ',\n\n',
       (err) => {
