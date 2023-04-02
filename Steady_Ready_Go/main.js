@@ -52,8 +52,8 @@ const readFile = async () => {
   // Get Item By Id
 
   app.get('/api/v1/products/:productId', (req, res) => {
-    const { productId } = req.params;
-    const parseItem = parseInt(productId);
+    const { productId } = req.params,
+      parseItem = parseInt(productId);
     let itemIndex = items.videoGames
       .map((element) => element.id)
       .indexOf(parseItem);
