@@ -86,9 +86,6 @@ const readFile = async () => {
     const itemString = JSON.stringify(items);
 
     appendFile(itemString);
-
-    console.log(parseItem);
-    console.log(itemIndex);
   });
 };
 
