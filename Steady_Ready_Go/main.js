@@ -13,6 +13,12 @@ const port = process.env.PORT || 3030,
 app.use(express.json());
 databaseModule.createDatabase(databaseName, objectName);
 
+const appendFile = async (string) => {
+  const filePath = path.join(__dirname, `${databaseName}.txt`),
+    data = await fs.promises.writeFile(filePath, string);
+  console.log(data);
+};
+
 const readFile = async () => {
   //Local Variables
 
@@ -40,13 +46,8 @@ const readFile = async () => {
     res.json(items);
     const stringPro = JSON.stringify(items);
 
-    const appendFile = async () => {
-      const filePath = path.join(__dirname, `${databaseName}.txt`),
-        data = await fs.promises.writeFile(filePath, stringPro);
-      console.log(data);
-    };
     console.log('ran it...');
-    appendFile();
+    appendFile(stringPro);
   });
 
   // Get Item By Id
@@ -61,8 +62,33 @@ const readFile = async () => {
     res.send(items.videoGames[itemIndex]);
   });
 
+  //Patch
+
   app.patch('/api/v1/products/:productId', (req, res) => {
-    //**TODO */
+    const { productId } = req.params,
+      parseItem = parseInt(productId),
+      itemIndex = items.videoGames
+        .map((element) => element.id)
+        .indexOf(parseItem);
+  });
+
+  // Delete
+
+  app.delete('/api/v1/products/:productId', (req, res) => {
+    const { productId } = req.params,
+      parseItem = parseInt(productId),
+      itemIndex = items.videoGames
+        .map((element) => element.id)
+        .indexOf(parseItem);
+
+    items.videoGames.splice(itemIndex, 1);
+    res.send(items.videoGames);
+    const itemString = JSON.stringify(items);
+
+    appendFile(itemString);
+
+    console.log(parseItem);
+    console.log(itemIndex);
   });
 };
 
