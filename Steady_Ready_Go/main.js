@@ -36,7 +36,27 @@ const readFile = async () => {
   // Post a new Item
 
   app.post('/api/v1/products', (req, res) => {
-    const item = req.body;
+    const schema = Joi.object({
+      name: Joi.string().min(3).required(),
+      description: Joi.string().min(10).max(100).required(),
+      price: Joi.number().required(),
+      Available_Units: Joi.number().required(),
+      category: Joi.string().min(5).max(15).required(),
+    });
+
+    const result = schema.validate(req.body);
+    if (result.error) {
+      res.status(400).send(result.error);
+      return;
+    }
+    const item = {
+      id: items.videoGames.length + 1,
+      name: req.body.name,
+      description: req.body.description,
+      price: req.body.price,
+      Available_Units: req.body.Available_Units,
+      category: req.body.category,
+    };
     items.videoGames.push(item);
     const stringPro = JSON.stringify(items);
     res.json(items);
@@ -73,6 +93,8 @@ const readFile = async () => {
       const item = req.body;
       items.videoGames.splice(itemIndex, 1, item);
       res.send(items.videoGames);
+    } else {
+      res.status(404).send('The course with the given ID was not found');
     }
 
     const itemString = JSON.stringify(items);
