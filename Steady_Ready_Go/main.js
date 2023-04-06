@@ -60,7 +60,32 @@ const readFile = async () => {
   //Patch
 
   app.patch('/api/v1/products/:productId', (req, res) => {
-    // **TODO
+    //**TODO Not Working */
+    const filePath = path.join(__dirname, `${databaseName}.txt`),
+      data = fs.promises.readFile(filePath, 'utf-8'),
+      items = JSON.parse(data);
+
+    const itemIndex = items.videoGames.find(
+      (c) => c.id === parseInt(req.params.id)
+    );
+    if (!itemIndex)
+      return res
+        .status(400)
+        .send('The Item with the given ID was not found...!');
+
+    const schema = Joi.object({
+      name: Joi.string().min(3).required(),
+    });
+
+    const result = schema.validate(req.body);
+    if (result.error) {
+      res.status(400).send(result.error);
+      return;
+    }
+    const items2 = (items.videoGames.name = req.body.name);
+    const itemString = JSON.stringify(items2);
+    appendModule.appendFile(itemString, databaseName);
+    res.send(product);
   });
 
   // Delete
