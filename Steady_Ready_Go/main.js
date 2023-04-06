@@ -7,17 +7,12 @@ const port = process.env.PORT || 3030,
   Joi = require('joi'),
   path = require('path'),
   databaseModule = require('./modules/databaseCreator.js'),
+  appendModule = require('./modules/appendFile'),
   databaseName = 'database',
   objectName = 'videoGames';
 
 app.use(express.json());
 databaseModule.createDatabase(databaseName, objectName);
-
-const appendFile = async (string) => {
-  const filePath = path.join(__dirname, `${databaseName}.txt`),
-    data = await fs.promises.writeFile(filePath, string);
-  console.log(data);
-};
 
 const readFile = async () => {
   //Local Variables
@@ -47,7 +42,7 @@ const readFile = async () => {
     const stringPro = JSON.stringify(items);
 
     console.log('ran it...');
-    appendFile(stringPro);
+    appendModule.appendFile(stringPro, databaseName);
   });
 
   // Get Item By Id
@@ -65,11 +60,7 @@ const readFile = async () => {
   //Patch
 
   app.patch('/api/v1/products/:productId', (req, res) => {
-    const { productId } = req.params,
-      parseItem = parseInt(productId),
-      itemIndex = items.videoGames
-        .map((element) => element.id)
-        .indexOf(parseItem);
+    // **TODO
   });
 
   // Delete
@@ -85,7 +76,7 @@ const readFile = async () => {
     res.send(items.videoGames);
     const itemString = JSON.stringify(items);
 
-    appendFile(itemString);
+    appendModule.appendFile(itemString, databaseName);
   });
 };
 
