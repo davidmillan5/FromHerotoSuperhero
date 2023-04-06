@@ -56,14 +56,27 @@ const readFile = async () => {
     if (itemIndex + 1 === parseItem) {
       res.send(items.videoGames[itemIndex]);
     } else {
-      res.send(`The Item Id entered ${parseItem} was not found....`);
+      res.status(404).send('The course with the given ID was not found');
     }
   });
 
   //Patch
 
   app.patch('/api/v1/products/:productId', (req, res) => {
-    //**TODO Not Working */
+    const { productId } = req.params,
+      parseItem = parseInt(productId),
+      itemIndex = items.videoGames
+        .map((element) => element.id)
+        .indexOf(parseItem);
+
+    if (itemIndex + 1 === parseItem) {
+      const item = req.body;
+      items.videoGames.splice(itemIndex, 1, item);
+      res.send(items.videoGames);
+    }
+
+    const itemString = JSON.stringify(items);
+    appendModule.appendFile(itemString, databaseName);
   });
 
   // Delete
@@ -75,10 +88,14 @@ const readFile = async () => {
         .map((element) => element.id)
         .indexOf(parseItem);
 
-    items.videoGames.splice(itemIndex, 1);
-    res.send(items.videoGames);
-    const itemString = JSON.stringify(items);
+    if (itemIndex + 1 === parseItem) {
+      items.videoGames.splice(itemIndex, 1);
+      res.send(items.videoGames);
+    } else {
+      res.send(`The Item Id ${parseItem} doesn't exists....`);
+    }
 
+    const itemString = JSON.stringify(items);
     appendModule.appendFile(itemString, databaseName);
   });
 };
