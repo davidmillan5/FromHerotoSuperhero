@@ -74,10 +74,10 @@ const readFile = async () => {
       parseItem = parseInt(productId),
       item = items.find((item) => item.id === parseItem);
 
-    // console.log(parseItem);
-    // console.log('print item ' + item.id);
+    console.log(parseItem);
+    console.log('print item ' + item);
 
-    if (item.id === parseItem) {
+    if (item?.id === parseItem) {
       res.send(item);
     } else {
       res.status(404).send('The item with the given ID was not found');
@@ -97,7 +97,7 @@ const readFile = async () => {
       return;
     }
 
-    if (item.id === parseItem) {
+    if (item?.id === parseItem) {
       const itemNew = {
         id: req.body.id,
         name: req.body.name,
@@ -123,10 +123,10 @@ const readFile = async () => {
       parseItem = parseInt(productId),
       item = items.find((item) => item.id === parseItem);
 
-    // console.log(parseItem);
-    // console.log('print item ' + item.id);
+    console.log(parseItem);
+    console.log('print item ' + item);
 
-    if (item.id === parseItem) {
+    if (item?.id === parseItem) {
       items.splice(item, 1);
       res.send(items);
     } else {
