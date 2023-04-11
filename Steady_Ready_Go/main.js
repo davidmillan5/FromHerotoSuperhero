@@ -18,9 +18,9 @@ databaseModule.createDatabase(databaseName, objectName);
 
 const schema = Joi.object({
   id: Joi.number().min(1).max(100).required(),
-  name: Joi.string().min(3).required(),
+  name: Joi.string().min(3).max(100).required(),
   description: Joi.string().min(10).max(100).required(),
-  price: Joi.number().required(),
+  price: Joi.number().min(1).max(1000).required(),
   Available_Units: Joi.number().required(),
   category: Joi.string().min(5).max(15).required(),
 });
@@ -41,7 +41,7 @@ const readFile = async () => {
   //Check The Database and what is in it
 
   app.get('/api/v1/products', (req, res) => {
-    res.send(items.videoGames);
+    res.send(items);
   });
 
   // Post a new Item
@@ -53,14 +53,14 @@ const readFile = async () => {
       return;
     }
     const item = {
-      id: items.videoGames.length + 1,
+      id: req.body.id,
       name: req.body.name,
       description: req.body.description,
       price: req.body.price,
       Available_Units: req.body.Available_Units,
       category: req.body.category,
     };
-    items.videoGames.push(item);
+    items.push(item);
     const stringPro = JSON.stringify(items);
     res.json(items);
     console.log(stringPro);
@@ -75,6 +75,9 @@ const readFile = async () => {
       itemIndex = items.videoGames
         .map((element) => element.id)
         .indexOf(parseItem);
+
+    console.log(parseItem);
+    console.log(itemIndex);
 
     if (itemIndex + 1 === parseItem) {
       res.send(items.videoGames[itemIndex]);
@@ -100,7 +103,7 @@ const readFile = async () => {
 
     if (itemIndex + 1 === parseItem) {
       const item = {
-        id: req.body.id,
+        id: items.videoGames.length + 1,
         name: req.body.name,
         description: req.body.description,
         price: req.body.price,
