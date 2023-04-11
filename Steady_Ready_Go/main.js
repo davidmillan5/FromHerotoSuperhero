@@ -1,6 +1,6 @@
 'use strict';
 
-const port = process.env.PORT || 3030,
+const port = process.env.PORT || 8000,
   express = require('express'),
   app = express(),
   fs = require('fs'),
@@ -13,6 +13,17 @@ const port = process.env.PORT || 3030,
 
 app.use(express.json());
 databaseModule.createDatabase(databaseName, objectName);
+
+// Joi Schema
+
+const schema = Joi.object({
+  id: Joi.number().min(1).max(100).required(),
+  name: Joi.string().min(3).required(),
+  description: Joi.string().min(10).max(100).required(),
+  price: Joi.number().required(),
+  Available_Units: Joi.number().required(),
+  category: Joi.string().min(5).max(15).required(),
+});
 
 const readFile = async () => {
   //Local Variables
@@ -36,14 +47,6 @@ const readFile = async () => {
   // Post a new Item
 
   app.post('/api/v1/products', (req, res) => {
-    const schema = Joi.object({
-      name: Joi.string().min(3).required(),
-      description: Joi.string().min(10).max(100).required(),
-      price: Joi.number().required(),
-      Available_Units: Joi.number().required(),
-      category: Joi.string().min(5).max(15).required(),
-    });
-
     const result = schema.validate(req.body);
     if (result.error) {
       res.status(400).send(result.error);
@@ -76,7 +79,7 @@ const readFile = async () => {
     if (itemIndex + 1 === parseItem) {
       res.send(items.videoGames[itemIndex]);
     } else {
-      res.status(404).send('The course with the given ID was not found');
+      res.status(404).send('The item with the given ID was not found');
     }
   });
 
@@ -89,12 +92,25 @@ const readFile = async () => {
         .map((element) => element.id)
         .indexOf(parseItem);
 
+    const result = schema.validate(req.body);
+    if (result.error) {
+      res.status(400).send(result.error);
+      return;
+    }
+
     if (itemIndex + 1 === parseItem) {
-      const item = req.body;
+      const item = {
+        id: req.body.id,
+        name: req.body.name,
+        description: req.body.description,
+        price: req.body.price,
+        Available_Units: req.body.Available_Units,
+        category: req.body.category,
+      };
       items.videoGames.splice(itemIndex, 1, item);
       res.send(items.videoGames);
     } else {
-      res.status(404).send('The course with the given ID was not found');
+      res.status(404).send('The item with the given ID was not found');
     }
 
     const itemString = JSON.stringify(items);
