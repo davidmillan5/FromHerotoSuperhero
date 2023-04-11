@@ -72,15 +72,13 @@ const readFile = async () => {
   app.get('/api/v1/products/:productId', (req, res) => {
     const { productId } = req.params,
       parseItem = parseInt(productId),
-      itemIndex = items.videoGames
-        .map((element) => element.id)
-        .indexOf(parseItem);
+      item = items.find((item) => item.id === parseItem);
 
-    console.log(parseItem);
-    console.log(itemIndex);
+    // console.log(parseItem);
+    // console.log('print item ' + item.id);
 
-    if (itemIndex + 1 === parseItem) {
-      res.send(items.videoGames[itemIndex]);
+    if (item.id === parseItem) {
+      res.send(item);
     } else {
       res.status(404).send('The item with the given ID was not found');
     }
@@ -91,9 +89,7 @@ const readFile = async () => {
   app.patch('/api/v1/products/:productId', (req, res) => {
     const { productId } = req.params,
       parseItem = parseInt(productId),
-      itemIndex = items.videoGames
-        .map((element) => element.id)
-        .indexOf(parseItem);
+      item = items.find((item) => item.id === parseItem);
 
     const result = schema.validate(req.body);
     if (result.error) {
@@ -101,17 +97,17 @@ const readFile = async () => {
       return;
     }
 
-    if (itemIndex + 1 === parseItem) {
-      const item = {
-        id: items.videoGames.length + 1,
+    if (item.id === parseItem) {
+      const itemNew = {
+        id: req.body.id,
         name: req.body.name,
         description: req.body.description,
         price: req.body.price,
         Available_Units: req.body.Available_Units,
         category: req.body.category,
       };
-      items.videoGames.splice(itemIndex, 1, item);
-      res.send(items.videoGames);
+      items.splice(item, 1, itemNew);
+      res.send(item);
     } else {
       res.status(404).send('The item with the given ID was not found');
     }
@@ -125,13 +121,14 @@ const readFile = async () => {
   app.delete('/api/v1/products/:productId', (req, res) => {
     const { productId } = req.params,
       parseItem = parseInt(productId),
-      itemIndex = items.videoGames
-        .map((element) => element.id)
-        .indexOf(parseItem);
+      item = items.find((item) => item.id === parseItem);
 
-    if (itemIndex + 1 === parseItem) {
-      items.videoGames.splice(itemIndex, 1);
-      res.send(items.videoGames);
+    // console.log(parseItem);
+    // console.log('print item ' + item.id);
+
+    if (item.id === parseItem) {
+      items.splice(item, 1);
+      res.send(items);
     } else {
       res.send(`The Item Id ${parseItem} doesn't exists....`);
     }
