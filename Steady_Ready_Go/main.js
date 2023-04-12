@@ -107,7 +107,7 @@ const readFile = async () => {
         category: req.body.category,
       };
       items.splice(item, 1, itemNew);
-      res.send(item);
+      res.send(items);
     } else {
       res.status(404).send('The item with the given ID was not found');
     }
@@ -124,10 +124,9 @@ const readFile = async () => {
       item = items.find((item) => item.id === parseItem);
 
     console.log(parseItem);
-    console.log('print item ' + item);
-
+    console.log(item?.id);
     if (item?.id === parseItem) {
-      items.splice(item, 1);
+      items.splice(item?.id - 1, 1);
       res.send(items);
     } else {
       res.send(`The Item Id ${parseItem} doesn't exists....`);
