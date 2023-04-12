@@ -121,12 +121,15 @@ const readFile = async () => {
   app.delete('/api/v1/products/:productId', (req, res) => {
     const { productId } = req.params,
       parseItem = parseInt(productId),
-      item = items.find((item) => item.id === parseItem);
+      item = items.find((item) => item.id === parseItem),
+      itemIndex = items.indexOf(item);
 
     console.log(parseItem);
     console.log(item?.id);
+    console.log(itemIndex);
     if (item?.id === parseItem) {
-      items.splice(item?.id - 1, 1);
+      items.splice(itemIndex, 1);
+      console.log(items);
       res.send(items);
     } else {
       res.send(`The Item Id ${parseItem} doesn't exists....`);
