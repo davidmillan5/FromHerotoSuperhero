@@ -74,9 +74,6 @@ const readFile = async () => {
       parseItem = parseInt(productId),
       item = items.find((item) => item.id === parseItem);
 
-    console.log(parseItem);
-    console.log('print item ' + item);
-
     if (item?.id === parseItem) {
       res.send(item);
     } else {
@@ -124,9 +121,6 @@ const readFile = async () => {
       item = items.find((item) => item.id === parseItem),
       itemIndex = items.indexOf(item);
 
-    console.log(parseItem);
-    console.log(item?.id);
-    console.log(itemIndex);
     if (item?.id === parseItem) {
       items.splice(itemIndex, 1);
       console.log(items);
