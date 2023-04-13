@@ -16,8 +16,16 @@ databaseModule.createDatabase(databaseName, objectName);
 
 // Joi Schema
 
-const schema = Joi.object({
+const schemaFull = Joi.object({
   id: Joi.number().min(1).max(100).required(),
+  name: Joi.string().min(3).max(100).required(),
+  description: Joi.string().min(10).max(100).required(),
+  price: Joi.number().min(1).max(1000).required(),
+  Available_Units: Joi.number().min(1).max(1000).required(),
+  category: Joi.string().min(5).max(15).required(),
+});
+
+const schemaCustom = Joi.object({
   name: Joi.string().min(3).max(100).required(),
   description: Joi.string().min(10).max(100).required(),
   price: Joi.number().min(1).max(1000).required(),
@@ -47,7 +55,7 @@ const readFile = async () => {
   // Post a new Item
 
   app.post('/api/v1/products', (req, res) => {
-    const result = schema.validate(req.body);
+    const result = schemaFull.validate(req.body);
     if (result.error) {
       res.status(400).send(result.error);
       return;
@@ -60,11 +68,20 @@ const readFile = async () => {
       Available_Units: req.body.Available_Units,
       category: req.body.category,
     };
-    items.push(item);
-    const stringPro = JSON.stringify(items);
-    res.json(items);
-    // console.log(stringPro);
-    appendModule.appendFile(stringPro, databaseName);
+
+    const findItemArr = items.find((itemInArray) => itemInArray.id === item.id);
+    // console.log(findItemArr);
+    if (findItemArr) {
+      res.send(
+        `The product Id that you are trying to create already exists.... try a different one`
+      );
+    } else {
+      items.push(item);
+      const stringPro = JSON.stringify(items);
+      res.json(items);
+      // console.log(stringPro);
+      appendModule.appendFile(stringPro, databaseName);
+    }
   });
 
   // Get Item By Id
@@ -88,7 +105,7 @@ const readFile = async () => {
       parseItem = parseInt(productId),
       item = items.find((item) => item.id === parseItem);
 
-    const result = schema.validate(req.body);
+    const result = schemaFull.validate(req.body);
     if (result.error) {
       res.status(400).send(result.error);
       return;
@@ -123,7 +140,7 @@ const readFile = async () => {
 
     if (item?.id === parseItem) {
       items.splice(itemIndex, 1);
-      console.log(items);
+      // console.log(items);
       res.send(items);
     } else {
       res.send(`The Item Id ${parseItem} doesn't exists....`);
