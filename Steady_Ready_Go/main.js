@@ -163,6 +163,7 @@ const readFile = async () => {
     if (item?.id === parseItem) {
       items.splice(itemIndex, 1);
       // console.log(items);
+      console.log(`The product ${item.name} has been deleted....`);
       res.send(items);
     } else {
       return res
