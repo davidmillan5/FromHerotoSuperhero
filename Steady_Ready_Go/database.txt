@@ -1,1 +1,1 @@
-[{"id":1,"name":"Super Mario Galaxy 3","description":"lbbkbkjbkjbkbkjblbkñbbkuuuñlbñ","price":80,"Available_Units":3,"category":"Console"},{"id":2,"name":"Pokemon - Diamond Version (Renewed)","description":"More elaborate Pokemon Contests. Players can use the accessories and dress up their Pokemon.","price":180,"Available_Units":1,"category":"Video Game"}]
+[{"id":84,"name":"Pokemon - Diamond Version (Renewed)","description":"More elaborate Pokemon Contests. Players can use the accessories and dress up their Pokemon.","price":180,"Available_Units":1,"category":"Video Game"}]

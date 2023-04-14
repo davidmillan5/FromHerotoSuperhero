@@ -2,16 +2,12 @@
 
 const fs = require('fs');
 
-const createDatabase = (databaseName, objectName) => {
+const createDatabase = (databaseName) => {
   if (!fs.existsSync(`${databaseName}.txt`)) {
-    fs.appendFile(
-      `${databaseName}.txt`,
-      `{"${objectName}":[]}`,
-      function (err) {
-        if (err) throw err;
-        console.log('database Created');
-      }
-    );
+    fs.appendFile(`${databaseName}.txt`, `[]`, function (err) {
+      if (err) throw err;
+      console.log('database Created');
+    });
   }
 };
 

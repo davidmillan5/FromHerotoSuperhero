@@ -8,16 +8,23 @@ const port = process.env.PORT || 8000,
   path = require('path'),
   databaseModule = require('./modules/databaseCreator.js'),
   appendModule = require('./modules/appendFile'),
-  databaseName = 'database',
-  objectName = 'videoGames';
+  databaseName = 'database';
 
 app.use(express.json());
-databaseModule.createDatabase(databaseName, objectName);
+databaseModule.createDatabase(databaseName);
 
 // Joi Schema
 
 const schemaFull = Joi.object({
   id: Joi.number().min(1).max(100).required(),
+  name: Joi.string().min(3).max(100).required(),
+  description: Joi.string().min(10).max(100).required(),
+  price: Joi.number().min(1).max(1000).required(),
+  Available_Units: Joi.number().min(1).max(1000).required(),
+  category: Joi.string().min(5).max(15).required(),
+});
+
+const schemaCustom = Joi.object({
   name: Joi.string().min(3).max(100).required(),
   description: Joi.string().min(10).max(100).required(),
   price: Joi.number().min(1).max(1000).required(),
@@ -31,6 +38,13 @@ const readFile = async () => {
   const filePath = path.join(__dirname, `${databaseName}.txt`),
     data = await fs.promises.readFile(filePath, 'utf-8'),
     items = JSON.parse(data);
+
+  // Logging Middleware
+
+  app.use((req, res, next) => {
+    console.log(`${req.method} Request Received`);
+    next();
+  });
 
   //Checks The database was created
 
@@ -46,14 +60,13 @@ const readFile = async () => {
 
   // Post a new Item
 
-  app.post('/api/v1/products', (req, res) => {
-    const result = schemaFull.validate(req.body);
+  app.post('/api/v1/products', (req, res, next) => {
+    const result = schemaCustom.validate(req.body);
     if (result.error) {
-      res.status(400).send(result.error);
-      return;
+      return res.status(400).send(result.error);
     }
     const item = {
-      id: req.body.id,
+      id: Math.round(Math.random() * 100),
       name: req.body.name,
       description: req.body.description,
       price: req.body.price,
@@ -64,9 +77,11 @@ const readFile = async () => {
     const findItemArr = items.find((itemInArray) => itemInArray.id === item.id);
     // console.log(findItemArr);
     if (findItemArr) {
-      res.send(
-        `The product Id that you are trying to create already exists.... try a different one`
-      );
+      return res
+        .status(409)
+        .send(
+          `The product Id ${item.id} that you are trying to create already exists.... try a different one`
+        );
     } else {
       items.push(item);
       const stringPro = JSON.stringify(items);
@@ -78,7 +93,7 @@ const readFile = async () => {
 
   // Get Item By Id
 
-  app.get('/api/v1/products/:productId', (req, res) => {
+  app.get('/api/v1/products/:productId', (req, res, next) => {
     const { productId } = req.params,
       parseItem = parseInt(productId),
       item = items.find((item) => item.id === parseItem);
@@ -86,7 +101,9 @@ const readFile = async () => {
     if (item?.id === parseItem) {
       res.send(item);
     } else {
-      res.status(404).send('The item with the given ID was not found');
+      return res
+        .status(404)
+        .send(`The item with the given ID ${parseItem} was not found`);
     }
   });
 
@@ -99,8 +116,7 @@ const readFile = async () => {
 
     const result = schemaFull.validate(req.body);
     if (result.error) {
-      res.status(400).send(result.error);
-      return;
+      return res.status(400).send(result.error);
     }
 
     if (item?.id === parseItem) {
@@ -115,7 +131,9 @@ const readFile = async () => {
       items.splice(item, 1, itemNew);
       res.send(items);
     } else {
-      res.status(404).send('The item with the given ID was not found');
+      return res
+        .status(404)
+        .send(`The item with the given ID ${parseItem} was not found`);
     }
 
     const itemString = JSON.stringify(items);
@@ -135,7 +153,11 @@ const readFile = async () => {
       // console.log(items);
       res.send(items);
     } else {
-      res.send(`The Item Id ${parseItem} doesn't exists....`);
+      return res
+        .status(404)
+        .send(
+          `The product Id ${parseItem} that you are trying to delete doesn't exists.... try a different one`
+        );
     }
 
     const itemString = JSON.stringify(items);
