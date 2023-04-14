@@ -13,8 +13,6 @@ const port = process.env.PORT || 8000,
 app.use(express.json());
 databaseModule.createDatabase(databaseName);
 
-// Joi Schema
-
 const schemaFull = Joi.object({
   id: Joi.number().min(1).max(100).required(),
   name: Joi.string().min(3).max(100).required(),
@@ -32,6 +30,17 @@ const schemaCustom = Joi.object({
   category: Joi.string().min(5).max(15).required(),
 });
 
+const errorLogger = (err, req, res, next) => {
+  console.log(err);
+  next(err);
+};
+
+const errorHandler = (err, req, res, next) => {
+  res.status(400).json({
+    message: err.message,
+  });
+};
+
 const readFile = async () => {
   //Local Variables
 
@@ -45,6 +54,9 @@ const readFile = async () => {
     console.log(`${req.method} Request Received`);
     next();
   });
+
+  app.use(errorLogger);
+  app.use(errorHandler);
 
   //Checks The database was created
 
