@@ -1,1 +1,1 @@
-[]
+[{"id":76,"name":"Pokemon - Diamond Version (Renewed)","description":"More elaborate Pokemon Contests. Players can use the accessories and dress up their Pokemon.","price":180,"Available_Units":1,"category":"Video Game"},{"id":82,"name":"Pokemon - Diamond Version (Renewed)","description":"More elaborate Pokemon Contests. Players can use the accessories and dress up their Pokemon.","price":180,"Available_Units":1,"category":"Video Game"}]

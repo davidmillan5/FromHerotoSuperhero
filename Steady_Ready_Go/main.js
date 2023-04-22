@@ -30,16 +30,16 @@ const schemaCustom = Joi.object({
   category: Joi.string().min(5).max(15).required(),
 });
 
-const errorLogger = (err, req, res, next) => {
-  console.log(err);
-  next(err);
-};
+// const errorLogger = (err, req, res, next) => {
+//   console.log(err);
+//   next(err);
+// };
 
-const errorHandler = (err, req, res, next) => {
-  res.status(400).json({
-    message: err.message,
-  });
-};
+// const errorHandler = (err, req, res, next) => {
+//   res.status(400).json({
+//     message: err.message,
+//   });
+// };
 
 const readFile = async () => {
   //Local Variables
@@ -55,8 +55,8 @@ const readFile = async () => {
     next();
   });
 
-  app.use(errorLogger);
-  app.use(errorHandler);
+  // app.use(errorLogger);
+  // app.use(errorHandler);
 
   //Checks The database was created
 
@@ -67,7 +67,9 @@ const readFile = async () => {
   //Check The Database and what is in it
 
   app.get('/api/v1/products', (req, res) => {
-    res.send(items);
+    // res.send(items);
+    const items = data.find();
+    res.json(items);
   });
 
   // Post a new Item
@@ -111,7 +113,9 @@ const readFile = async () => {
       item = items.find((item) => item.id === parseItem);
 
     if (item?.id === parseItem) {
-      res.send(item);
+      // res.send(item);
+      const products = data.find({ id: parseItem });
+      res.json(products);
     } else {
       return res
         .status(404)

@@ -5,6 +5,7 @@
   "main": "main.js",
   "scripts": {
     "dev": "nodemon main.js",
+    "dev": "node --watch src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -20,9 +21,15 @@
   "author": "Cesar David Millan",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "http-status-codes": "^2.2.0",
     "joi": "^17.9.1",
+    "mongoose": "^7.0.4",
     "nodemon": "^2.0.22"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/node": "^18.15.13"
   }
 }
