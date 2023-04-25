@@ -1,0 +1,9 @@
+const databaseName = 'products',
+  Joi = require('Joi'),
+  // { schemaFull, schemaCustom } = require('../Schema/joiSchema'),
+  // appendFile = require('../modules/appendFiles'),
+  path = require('path'),
+  fs = require('fs'),
+  { Product } = require('../models/products'),
+  express = require('express'),
+  app = express();

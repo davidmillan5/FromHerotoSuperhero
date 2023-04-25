@@ -12,5 +12,3 @@ const createDatabase = (databaseName) => {
 };
 
 module.exports.createDatabase = createDatabase;
-
-//console.log(module);

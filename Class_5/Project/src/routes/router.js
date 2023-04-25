@@ -1,18 +1,15 @@
-const { Router } = require('express');
-const express = require('express');
+const express = require('express'),
+  controller = require('../controllers/productControllers'),
+  router = express.Router(),
+  BASE = '/api/v1/products';
 
-const routes = new Router();
-
-//Health check
-routes.get('/health', (_, res) => {
+router.get('/health', (_, res) => {
   res.send('check');
 });
 
-const BASE = '/api/v1/products';
+router
+  .route(BASE)
+  .get(controller.getAllProducts)
+  .post(controller.createProduct);
 
-routes.get(BASE, async (_, res) => {
-  const products = await Product.find();
-  res.json(products);
-});
-
-module.exports = routes;
+module.exports = router;
