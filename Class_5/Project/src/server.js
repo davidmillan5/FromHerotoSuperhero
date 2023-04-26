@@ -1,15 +1,12 @@
 require('dotenv').config();
 
 const PORT = process.env.PORT || 3000,
-  path = require('path'),
   express = require('express'),
   app = express(),
   { logger } = require('./middleware/logEvents'),
   errorHandler = require('./middleware/errorHandler'),
-  appendFiles = require('./modules/appendFiles'),
-  databaseCreator = require('./modules/databaseCreator'),
-  databaseName = 'products',
-  readFile = require('./controllers/productControllers.js');
+  handleFile = require('./controllers/productControllers'),
+  mongoose = require('mongoose');
 
 // Custom Middleware Logger
 app.use(logger);
@@ -25,11 +22,22 @@ app.use(express.json());
 
 app.use('/', require('./routes/router'));
 
-// database Creator
-databaseCreator.createDatabase(databaseName);
-
 app.use(errorHandler);
 
-app.listen(PORT, () => {
-  console.log(`Server started on port ${PORT}...`);
-});
+const start = async () => {
+  try {
+    await mongoose.connect(process.env.MONGODB_CONNECTION, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+
+    app.listen(PORT, () => {
+      console.log(`Server started on port ${PORT}...`);
+    });
+  } catch (error) {
+    console.error(error);
+    process.exit(1);
+  }
+};
+
+start();

@@ -1,7 +1,7 @@
 const express = require('express'),
-  controller = require('../controllers/productControllers'),
   router = express.Router(),
-  BASE = '/api/v1/products';
+  BASE = '/api/v1/products',
+  productController = require('../controllers/productControllers');
 
 router.get('/health', (_, res) => {
   res.send('check');
@@ -9,7 +9,13 @@ router.get('/health', (_, res) => {
 
 router
   .route(BASE)
-  .get(controller.getAllProducts)
-  .post(controller.createProduct);
+  .get(productController.getAllProducts)
+  .post(productController.createProduct);
+
+router
+  .route(`${BASE}/:id`)
+  .get(productController.getProductById)
+  .put(productController.updateProduct)
+  .delete(productController.deleteProduct);
 
 module.exports = router;
