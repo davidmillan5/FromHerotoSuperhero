@@ -3,10 +3,10 @@ POST http://localhost:3000/api/v1/products HTTP/1.1
 Content-Type: application/json
 
 {
-  "title":"Pokemon Crystal Version - New Save Battery (Renewed)",
-  "description":"Pokémon Crystal Version is the third and final Generation II core series game for Game Boy Color.",
-  "price":269,
-  "Available_Units":10,
+  "title":"Pokemon HeartGold Version - Limited Edition - Nintendo DS",
+  "description":"Prepare for thrilling new adventures as Legendary Pokémon awaken!.",
+  "price":200,
+  "Available_Units":15,
   "category":"Video Games"
 }
 
