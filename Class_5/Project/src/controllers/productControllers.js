@@ -1,57 +1,63 @@
-const { Product } = require('../models/products');
-const { schemaCustoms, schemaFull } = require('../Schema/joiSchema');
+const productSchema = require('../models/products');
+// const { schemaCustoms, schemaFull } = require('../Schema/joiSchema');
 const Joi = require('Joi');
 
+const schemaCustom = Joi.object({
+  title: Joi.string().min(3).max(100).required(),
+  description: Joi.string().min(10).max(100).required(),
+  price: Joi.number().min(1).max(1000).required(),
+  Available_Units: Joi.number().min(1).max(1000).required(),
+  category: Joi.string().min(5).max(15).required(),
+});
+
 const createProduct = (req, res) => {
-  const result = schemaCustoms.validate(req.body);
+  const result = schemaCustom.validate(req.body);
   if (result.error) {
     return res.status(400).send(result.error);
   }
-  const item = {
-    name: req.body.name,
-    description: req.body.description,
-    price: req.body.price,
-    Available_Units: req.body.Available_Units,
-    category: req.body.category,
-  };
+  const product = productSchema(req.body);
 
-  item
+  product
     .save()
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 };
 
 const getAllProducts = (_, res) => {
-  Product.find()
+  productSchema
+    .find()
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 };
 
 const getProductById = (req, res) => {
   const { id } = req.params;
-  Product.findById(id)
+  productSchema
+    .findById(id)
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 };
 
 const updateProduct = (req, res) => {
   const { id } = req.params;
-  const result = schemaFull.validate(req.body);
+  const result = schemaCustom.validate(req.body);
   if (result.error) {
     return res.status(400).send(result.error);
   }
-
-  Product.updateOne(
-    { _id: id },
-    { $set: { name, description, price, Available_Units, category } }
-  )
+  const { title, description, price, Available_Units, category } = req.body;
+  productSchema
+    .updateOne(
+      { _id: id },
+      { $set: { title, description, price, Available_Units, category } }
+    )
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 };
 
 const deleteProduct = (req, res) => {
   const { id } = req.params;
-  Product.deleteOne({ _id: id })
+  productSchema
+    .deleteOne({ _id: id })
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 };

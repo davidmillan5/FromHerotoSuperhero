@@ -32,3 +32,19 @@
 20230424	22:49:38	1aef3448-2112-4849-97a0-b03e28f032fa	ReferenceError: items is not defined
 20230424	22:50:13	422ff97e-1df3-46db-aaf0-49d8d46f944a	TypeError: data.find is not a function
 20230424	22:50:46	b83b8a38-4080-4b1f-ba47-13ee09716571	TypeError: Cannot read properties of undefined (reading 'find')
+20230425	21:25:47	7ed27bc2-6841-4088-a61b-7bc815b1b8dd	TypeError: Cannot read properties of undefined (reading 'validate')
+20230425	21:27:22	cd0adf7a-e80d-4d23-997a-61e73168190c	ReferenceError: schemaCustoms is not defined
+20230425	21:27:47	875a9b07-a59e-45d7-b559-02aa235c9baa	TypeError: item.save is not a function
+20230425	21:33:24	0a81378d-58d9-474d-8b17-273a114b88e0	TypeError: Cannot read properties of undefined (reading 'save')
+20230425	21:34:41	ecaf3a0e-2fff-47e3-b414-87594b7d49a3	TypeError: result.save is not a function
+20230425	21:35:35	6c5084b0-b617-4901-84f7-ef1831db7181	TypeError: Product is not a function
+20230425	21:40:54	cd8c51c9-9d44-4d5b-b0fa-e66f9dd8629b	ReferenceError: productSchema is not defined
+20230425	21:43:01	cf7ffcf3-2dd0-4ae8-994e-dc657a738cfd	ReferenceError: Product is not defined
+20230425	21:49:36	5ccd359e-1c1e-4989-97cc-a7f33332e491	ReferenceError: name is not defined
+20230425	21:51:18	799ad5cd-ae29-4fa2-9a9c-937c6f09ce8c	ReferenceError: description is not defined
+20230425	21:51:30	336937a3-bda6-455a-83ae-57e470773e72	ReferenceError: description is not defined
+20230425	21:52:31	e67a117d-0837-4d4c-9394-501b9dc04c39	ReferenceError: title is not defined
+20230425	22:01:38	00cbf79c-cc56-464a-ac54-81c46088ca17	SyntaxError: Unexpected token , in JSON at position 290
+20230425	22:02:01	84f16b88-f3e8-45ac-bdc2-a0698996a2e4	SyntaxError: Unexpected token , in JSON at position 224
+20230425	22:03:13	92fe63c9-7b97-4d9d-ad44-3be1c7cbe248	SyntaxError: Unexpected token } in JSON at position 244
+20230425	22:03:24	42a1322f-9e1a-48d7-85f7-b7009034f3cb	SyntaxError: Unexpected token , in JSON at position 198
