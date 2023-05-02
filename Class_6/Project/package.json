@@ -1,5 +1,5 @@
 {
-  "name": "project_2",
+  "name": "class_6",
   "version": "1.0.0",
   "description": "API with Postgresql",
   "main": "server.js",
@@ -26,9 +26,15 @@
     "express": "^4.18.2",
     "joi": "^17.9.1",
     "mongoose": "^7.0.5",
+    "sequelize": "^6.31.1",
+    "sqlite3": "^5.1.6",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "sequelize-cli": "^6.6.0"
+  },
+  "directories": {
+    "doc": "docs"
   }
 }
