@@ -48,3 +48,5 @@
 20230425	22:02:01	84f16b88-f3e8-45ac-bdc2-a0698996a2e4	SyntaxError: Unexpected token , in JSON at position 224
 20230425	22:03:13	92fe63c9-7b97-4d9d-ad44-3be1c7cbe248	SyntaxError: Unexpected token } in JSON at position 244
 20230425	22:03:24	42a1322f-9e1a-48d7-85f7-b7009034f3cb	SyntaxError: Unexpected token , in JSON at position 198
+20230506	12:06:28	8b58064e-8331-4ce4-a9d3-4470cb494d2e	TypeError: Cannot read properties of undefined (reading 'findAll')
+20230506	12:07:31	7cead888-c6da-443c-927a-bca8dcf7d610	SequelizeDatabaseError: column "lastName" does not exist

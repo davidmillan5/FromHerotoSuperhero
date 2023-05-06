@@ -140,3 +140,10 @@
 20230506	08:21:19	10383acc-5ab0-4253-960f-4f696c60a91a	POST	undefined	/api/v1/products
 20230506	08:21:29	240ea077-bcfe-4cb4-8649-c49dad5074af	GET	undefined	/api/v1/products
 20230506	08:24:52	4905538d-9b68-4665-84eb-5f02d4d6fe5d	POST	undefined	/api/v1/products
+20230506	11:58:51	ee502ee3-ce61-43e7-9d58-5ed7e885f53c	GET	undefined	/api/v1/users
+20230506	12:00:20	756c4100-f472-42a2-9f59-c23f7777fed5	GET	undefined	/api/v1/users
+20230506	12:04:15	3cee9548-e273-42f1-a2eb-9db4f87c87b9	GET	undefined	/v1/users
+20230506	12:04:17	d0d66b59-312b-492d-827e-3cdd6b3181d0	GET	undefined	/v1/users
+20230506	12:04:25	16b0080e-702d-47e4-8aee-b727f7f835f9	GET	undefined	/api/v1/users
+20230506	12:06:28	03905562-91f9-483f-9757-dd9c0255d131	GET	undefined	/v1/users
+20230506	12:07:31	b46f3f11-38a2-483e-8543-e4b820dd43a0	GET	undefined	/v1/users

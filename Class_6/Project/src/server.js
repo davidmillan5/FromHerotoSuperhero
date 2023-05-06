@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 3000,
   errorHandler = require('./middleware/errorHandler'),
   handleFile = require('./controllers/productControllers'),
   mongoose = require('mongoose');
+const sequelize = require('./utils/postgresql');
 
 // Custom Middleware Logger
 app.use(logger);
@@ -20,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 // built-in middleware for json
 app.use(express.json());
 
-app.use('/', require('./routes/router'));
+app.use('/', require('./routes'));
 
 app.use(errorHandler);
 
@@ -31,9 +32,11 @@ const start = async () => {
       useUnifiedTopology: true,
     });
 
+    await sequelize.sync();
+
     app.listen(PORT, () => {
       console.log(`Server started on port ${PORT}...`);
-      console.log('Connected to MongoDB');
+      console.log('Connected to Database...');
     });
   } catch (error) {
     console.error(error);
