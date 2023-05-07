@@ -12,14 +12,14 @@ Content-Type: application/json
 
 
 ###
-GET http://localhost:3000/v1/users HTTP/1.1
+GET http://localhost:3000/v1/products HTTP/1.1
 
 
 ###
-GET http://localhost:3000/api/v1/products/64565350018745f204bb656a HTTP/1.1
+GET http://localhost:3000/v1/products/644d147d51c08e90872cb030 HTTP/1.1
 
 ###
-PUT http://localhost:3000/api/v1/products/64564f17a021ea01777f78e0 HTTP/1.1
+PUT http://localhost:3000/v1/products/644d147d51c08e90872cb030 HTTP/1.1
 Content-Type: application/json
 
 {
@@ -31,4 +31,4 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/api/v1/products/64564f17a021ea01777f78e0 HTTP/1.1
+DELETE http://localhost:3000/v1/products/64489a5f8475e617ba3a0779 HTTP/1.1

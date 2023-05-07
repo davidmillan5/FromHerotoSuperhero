@@ -1,5 +1,4 @@
-const productSchema = require('../models/products');
-// const { schemaCustoms, schemaFull } = require('../Schema/joiSchema');
+const { Product } = require('../models');
 const Joi = require('Joi');
 
 const schemaCustom = Joi.object({
@@ -10,56 +9,41 @@ const schemaCustom = Joi.object({
   category: Joi.string().min(5).max(15).required(),
 });
 
-const createProduct = (req, res) => {
+const createProduct = async (req, res) => {
   const result = schemaCustom.validate(req.body);
   if (result.error) {
     return res.status(400).send(result.error);
   }
-  const product = productSchema(req.body);
+  const product = await new Product(req.body).save();
 
-  product
-    .save()
-    .then((data) => res.json(data))
-    .catch((error) => res.json({ message: error }));
+  res.json(product);
 };
 
-const getAllProducts = (_, res) => {
-  productSchema
-    .find()
-    .then((data) => res.json(data))
-    .catch((error) => res.json({ message: error }));
+const getAllProducts = async (_, res) => {
+  const products = await Product.find();
+  res.json(products);
 };
 
-const getProductById = (req, res) => {
+const getProductById = async (req, res) => {
   const { id } = req.params;
-  productSchema
-    .findById(id)
-    .then((data) => res.json(data))
-    .catch((error) => res.json({ message: error }));
+  const productById = await Product.findById(id);
+  res.json(productById);
 };
 
-const updateProduct = (req, res) => {
+const updateProduct = async (req, res) => {
   const { id } = req.params;
   const result = schemaCustom.validate(req.body);
   if (result.error) {
     return res.status(400).send(result.error);
   }
-  const { title, description, price, Available_Units, category } = req.body;
-  productSchema
-    .updateOne(
-      { _id: id },
-      { $set: { title, description, price, Available_Units, category } }
-    )
-    .then((data) => res.json(data))
-    .catch((error) => res.json({ message: error }));
+  const product = await Product.findByIdAndUpdate(id, req.body);
+  res.json(product);
 };
 
-const deleteProduct = (req, res) => {
+const deleteProduct = async (req, res) => {
   const { id } = req.params;
-  productSchema
-    .deleteOne({ _id: id })
-    .then((data) => res.json(data))
-    .catch((error) => res.json({ message: error }));
+  const product = await Product.findOneAndRemove(id, { new: true });
+  res.json({ message: `Product ${product.title} has been deleted` });
 };
 
 module.exports = {
