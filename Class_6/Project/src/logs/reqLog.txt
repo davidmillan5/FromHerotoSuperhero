@@ -179,3 +179,14 @@
 20230507	10:25:30	33f1fc1f-9ae2-4120-9909-0d11fffce9d6	GET	undefined	/v1/products/64489440df62849f507f999d
 20230507	10:25:50	d4d3069d-b435-41ae-a08a-4bb8bd994be9	GET	undefined	/v1/products/644d147d51c08e90872cb030
 20230507	10:29:42	7722f2dc-8585-41a2-b7fa-dc5ad50e6359	GET	undefined	/v1/products
+20230507	11:58:14	52d630cc-e0be-4b55-89fb-e424603daf57	GET	undefined	/v1/users
+20230507	12:02:00	fa83119a-a377-4028-9a3d-bb507e94673a	GET	undefined	/v1/users
+20230507	12:02:56	8b3e576e-4dba-4094-a91d-f6d8363b6f18	GET	undefined	/v1/users
+20230507	12:04:36	b01126a7-950b-4e34-bcde-01470f46b0d0	GET	undefined	/v1/users
+20230507	12:08:03	84b6a690-fb5e-4b21-b05e-ebee2e0c22e5	GET	undefined	/v1/users
+20230507	12:09:08	637acdbd-fa0c-4516-8f0e-2c6ec0e56a09	GET	undefined	/v1/users
+20230507	12:09:45	590aaf0a-d163-419e-98a6-2abcc9b75a7a	GET	undefined	/v1/users
+20230507	12:09:49	3b28376a-5e5c-44ea-b2fe-34eff9757dae	GET	undefined	/v1/users
+20230507	12:10:19	605c1dfa-ef37-4868-9ab4-87048d755685	GET	undefined	/v1/users
+20230507	12:11:03	72d455c2-2482-4b97-9fe6-a1dc3af2113a	GET	undefined	/v1/users
+20230507	12:12:49	b85264dc-9fe2-48fa-ae45-3fb94ab4f96f	GET	undefined	/v1/users

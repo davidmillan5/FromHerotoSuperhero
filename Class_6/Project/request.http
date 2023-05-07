@@ -32,3 +32,7 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:3000/v1/products/64489a5f8475e617ba3a0779 HTTP/1.1
+
+###
+GET http://localhost:3000/v1/users HTTP/1.1
+

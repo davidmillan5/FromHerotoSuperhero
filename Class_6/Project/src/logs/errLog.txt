@@ -50,3 +50,13 @@
 20230425	22:03:24	42a1322f-9e1a-48d7-85f7-b7009034f3cb	SyntaxError: Unexpected token , in JSON at position 198
 20230506	12:06:28	8b58064e-8331-4ce4-a9d3-4470cb494d2e	TypeError: Cannot read properties of undefined (reading 'findAll')
 20230506	12:07:31	7cead888-c6da-443c-927a-bca8dcf7d610	SequelizeDatabaseError: column "lastName" does not exist
+20230507	11:58:15	2f8e0fa6-ab0d-4d76-bef3-a7833b2c2d21	SequelizeDatabaseError: column "lastName" does not exist
+20230507	12:02:01	b842348f-0ca2-4410-bcad-eb498309d085	SequelizeDatabaseError: column "lastname" does not exist
+20230507	12:02:58	842ab70d-e621-41ea-8189-7b44ac3644f2	SequelizeDatabaseError: column "lastname" does not exist
+20230507	12:04:37	0f026923-6722-44c0-9a79-b55a1a77e995	SequelizeDatabaseError: column "lastname" does not exist
+20230507	12:08:04	2b30a025-3810-4aeb-9796-7273d9f87bf3	SequelizeDatabaseError: column "lastname" does not exist
+20230507	12:09:10	e93e6242-dacc-4e41-b270-eb3c9a40bdda	SequelizeDatabaseError: column "lastname" does not exist
+20230507	12:09:47	8d005c71-8540-4d66-9f57-25d96a701f29	SequelizeDatabaseError: column "lastname" does not exist
+20230507	12:09:49	1a184fbb-cd04-47a4-815d-08807bf175e1	SequelizeDatabaseError: column "lastname" does not exist
+20230507	12:10:20	aba50291-141c-4b78-ba8e-7d76077e9544	SequelizeDatabaseError: column "lastname" does not exist
+20230507	12:11:05	fc6942ee-9e38-4954-aa7d-8a1a4dec85ef	SequelizeDatabaseError: column "lastname" does not exist

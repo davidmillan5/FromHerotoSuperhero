@@ -5,7 +5,6 @@ const PORT = process.env.PORT || 3000,
   app = express(),
   { logger } = require('./middleware/logEvents'),
   errorHandler = require('./middleware/errorHandler'),
-  handleFile = require('./controllers/productControllers'),
   mongoose = require('mongoose');
 const sequelize = require('./utils/postgresql');
 
