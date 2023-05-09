@@ -60,3 +60,5 @@
 20230507	12:09:49	1a184fbb-cd04-47a4-815d-08807bf175e1	SequelizeDatabaseError: column "lastname" does not exist
 20230507	12:10:20	aba50291-141c-4b78-ba8e-7d76077e9544	SequelizeDatabaseError: column "lastname" does not exist
 20230507	12:11:05	fc6942ee-9e38-4954-aa7d-8a1a4dec85ef	SequelizeDatabaseError: column "lastname" does not exist
+20230508	22:31:55	4b26680c-a2cc-4145-8a70-ba79c42a5aac	SequelizeValidationError: notNull Violation: User.lastname cannot be null
+20230508	23:11:00	2836049a-ca50-42d0-a8af-5f158b4f4013	SyntaxError: Unexpected token } in JSON at position 158

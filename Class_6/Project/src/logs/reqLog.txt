@@ -193,3 +193,17 @@
 20230507	12:23:01	fa895286-e2db-48b1-a18e-cb7bd141ae43	PUT	undefined	/v1/products/644d147d51c08e90872cb030
 20230507	12:23:28	b603fa7d-d9dc-4308-a06e-bc5b0a4120d3	GET	undefined	/v1/products/644d147d51c08e90872cb030
 20230507	12:23:49	442b6828-60ab-462c-9940-73598c4316d4	GET	undefined	/v1/products
+20230508	22:25:44	26802083-ee2f-4224-a0cd-326028fd3de3	GET	undefined	/v1/users
+20230508	22:31:55	60b556da-fce3-416c-9a7e-e493f30ef815	POST	undefined	/v1/users
+20230508	22:32:29	224e5ab4-e6c6-47c0-a2bd-ff36e844ac04	POST	undefined	/v1/users
+20230508	22:44:02	6894201c-6be8-4b34-9228-2c017a155609	GET	undefined	/v1/users/1
+20230508	22:44:36	eac6d8cb-aca0-4ce8-a16f-a21af8e97ef9	GET	undefined	/v1/users/1
+20230508	22:55:18	b2eb4918-998b-474a-a4c0-ba04c122bfd2	POST	undefined	/v1/users
+20230508	22:55:24	416d0e6d-3d93-4b31-b58c-3d81e015a316	GET	undefined	/v1/users
+20230508	22:55:33	0788bf4e-0182-491e-8b3c-c050d2bab828	GET	undefined	/v1/users/1
+20230508	22:55:56	40d05e57-2f61-4989-a7de-0c0667206634	DELETE	undefined	/v1/users/1
+20230508	22:56:04	926c74ae-a87a-413b-8727-6291ecd49d3e	GET	undefined	/v1/users
+20230508	23:10:59	26a526c0-7232-4721-af37-d726107fcd1c	POST	undefined	/v1/users
+20230508	23:17:59	95e6b097-7a92-4d46-be4b-3c34ff78c15d	GET	undefined	/v1/users
+20230508	23:19:37	f9df6eab-7966-4a12-a8eb-3110bc307a0d	POST	undefined	/v1/users
+20230508	23:20:09	b09ebca1-402a-4175-8150-9a299bc15957	POST	undefined	/v1/users

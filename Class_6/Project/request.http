@@ -36,3 +36,24 @@ DELETE http://localhost:3000/v1/products/64489a5f8475e617ba3a0779 HTTP/1.1
 ###
 GET http://localhost:3000/v1/users HTTP/1.1
 
+###
+POST http://localhost:3000/v1/users HTTP/1.1
+Content-Type: application/json
+
+{
+  "name":"Kiryū",
+  "lastname":"Moeka",
+  "email":"moeka@gmail.com",
+  "password":"textmessage",
+  "birthday":"04/05/1989",
+  "address":"Akihabara",
+  "nationalId":465758,
+}
+
+
+###
+GET http://localhost:3000/v1/users/1 HTTP/1.1
+
+
+###
+DELETE http://localhost:3000/v1/users/1 HTTP/1.1
