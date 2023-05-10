@@ -62,3 +62,25 @@
 20230507	12:11:05	fc6942ee-9e38-4954-aa7d-8a1a4dec85ef	SequelizeDatabaseError: column "lastname" does not exist
 20230508	22:31:55	4b26680c-a2cc-4145-8a70-ba79c42a5aac	SequelizeValidationError: notNull Violation: User.lastname cannot be null
 20230508	23:11:00	2836049a-ca50-42d0-a8af-5f158b4f4013	SyntaxError: Unexpected token } in JSON at position 158
+20230510	11:20:02	c36b64ec-7a68-446f-b0a1-dce32e6ca07f	SyntaxError: Unexpected token } in JSON at position 182
+20230510	11:21:41	41a43b24-b627-49a9-913d-d8e147950852	SyntaxError: Unexpected token } in JSON at position 182
+20230510	11:23:29	6a2feebe-f719-402e-a900-4fa4592c8b5b	SyntaxError: Unexpected token } in JSON at position 182
+20230510	11:26:53	72b17151-a8b7-452e-9a5c-3afc2e5f528b	SyntaxError: Unexpected token } in JSON at position 188
+20230510	11:28:31	5b0bc939-44b1-45bd-af2d-0802f4f1c0f7	SyntaxError: Unexpected number in JSON at position 180
+20230510	11:28:46	435a3582-3280-4499-a429-1bba720f64da	SyntaxError: Unexpected number in JSON at position 180
+20230510	11:28:50	35bde0c8-c697-4a38-815f-3eae0bcaaab8	SyntaxError: Unexpected number in JSON at position 180
+20230510	11:28:56	0245e8f9-5fef-4588-9488-1d6445b4cddb	SyntaxError: Unexpected number in JSON at position 180
+20230510	11:29:24	a95c9bd4-023f-4713-8934-f7dca42ac14c	SyntaxError: Unexpected number in JSON at position 180
+20230510	11:48:02	8ec954ba-116c-469a-b476-3a8031e7f8e1	SequelizeDatabaseError: no existe la relación «Characters»
+20230510	11:48:56	b4f14364-19eb-4647-a9b8-c3bb3146057c	SequelizeDatabaseError: no existe la relación «Characters»
+20230510	11:50:12	aeccdde1-e38e-4f18-aecd-0ec10d30e190	SequelizeDatabaseError: no existe la relación «characters»
+20230510	11:52:05	863f625e-f5a0-4061-9aee-a54a02876ec8	SequelizeDatabaseError: no existe la columna «id»
+20230510	11:55:53	c2aa5a8d-99dc-40b3-a67e-c81162c3337c	SequelizeDatabaseError: no existe la columna «name»
+20230510	11:55:53	ec5cc89d-a458-4956-8e66-0400b49b1808	SequelizeDatabaseError: no existe la columna «name»
+20230510	11:55:56	4cba5ae1-dfb6-4a29-8622-cfe96a34af80	SequelizeDatabaseError: no existe la columna «name» en la relación «characters»
+20230510	11:57:04	9f27746f-0861-4d78-a73e-0c7e6b973440	SequelizeDatabaseError: no existe la columna «createdAt»
+20230510	11:58:48	053a7520-4158-4177-a00c-9f747962e953	SequelizeDatabaseError: no existe la columna «createdAt»
+20230510	11:59:18	0e58b8d8-7973-487e-a7f9-8d1e71607cd2	SequelizeDatabaseError: no existe la columna «updatedAt»
+20230510	11:59:47	7690087d-1d97-41cb-ada6-ad96d558d80e	SequelizeDatabaseError: el valor nulo en la columna «id» de la relación «characters» viola la restricción de no nulo
+20230510	12:00:32	1de78b99-6f36-49f3-9e26-5ebd72a85566	SyntaxError: Unexpected string in JSON at position 15
+20230510	12:02:27	a32a8969-faa4-4443-8bd7-77ac614d95a2	SequelizeDatabaseError: el valor nulo en la columna «id» de la relación «characters» viola la restricción de no nulo

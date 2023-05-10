@@ -8,6 +8,9 @@ const PORT = process.env.PORT || 3000,
   mongoose = require('mongoose');
 const sequelize = require('./utils/postgresql');
 
+// Local Postgres Connection
+const db = require('./config/localConnection');
+
 // Custom Middleware Logger
 app.use(logger);
 
@@ -33,6 +36,7 @@ const start = async () => {
 
     await sequelize.sync();
     await sequelize.authenticate();
+    await db.authenticate();
 
     app.listen(PORT, () => {
       console.log(`Server started on port ${PORT}...`);

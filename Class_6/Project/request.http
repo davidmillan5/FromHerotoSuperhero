@@ -41,13 +41,13 @@ POST http://localhost:3000/v1/users HTTP/1.1
 Content-Type: application/json
 
 {
-  "name":"Kiryū",
-  "lastname":"Moeka",
-  "email":"moeka@gmail.com",
-  "password":"textmessage",
-  "birthday":"04/05/1989",
+  "name":"Hashida",
+  "lastname":"Itaru",
+  "email":"hashidaitaru@gmail.com",
+  "password":"tsundere",
+  "birthday":"04/08/1989",
   "address":"Akihabara",
-  "nationalId":465758,
+  "nationalId":125
 }
 
 
@@ -57,3 +57,23 @@ GET http://localhost:3000/v1/users/1 HTTP/1.1
 
 ###
 DELETE http://localhost:3000/v1/users/1 HTTP/1.1
+
+
+###
+GET http://localhost:3000/v1/characters HTTP/1.1
+
+
+###
+POST http://localhost:3000/v1/characters HTTP/1.1
+Content-Type: application/json
+
+{
+  "id":1,
+  "name":"Hashida",
+  "lastname":"Itaru",
+  "email":"hashidaitaru@gmail.com",
+  "password":"tsundere",
+  "birthday":"04/08/1989",
+  "address":"Akihabara",
+  "nationalId":125
+}
