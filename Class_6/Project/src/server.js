@@ -36,6 +36,7 @@ const start = async () => {
 
     await sequelize.sync();
     await sequelize.authenticate();
+    await db.sync();
     await db.authenticate();
 
     app.listen(PORT, () => {

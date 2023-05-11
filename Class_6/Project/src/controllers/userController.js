@@ -47,6 +47,21 @@ exports.getUserById = async (req, res, next) => {
   }
 };
 
+exports.updateById = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const user = await User.update(req.body, {
+      returning: true,
+      where: {
+        id,
+      },
+    });
+    res.json(user);
+  } catch (error) {
+    next(error);
+  }
+};
+
 exports.deleteById = async (req, res, next) => {
   const { id } = req.params;
   try {

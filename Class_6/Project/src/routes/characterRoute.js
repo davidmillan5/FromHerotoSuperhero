@@ -14,6 +14,7 @@ router
 router
   .route(`/:id`)
   .get(characterController.getCharacterById)
+  .put(characterController.updateCharacterById)
   .delete(characterController.deleteById);
 
 module.exports = router;
