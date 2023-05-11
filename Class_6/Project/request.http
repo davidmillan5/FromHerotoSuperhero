@@ -76,6 +76,9 @@ DELETE http://localhost:3000/v1/users/1 HTTP/1.1
 ###
 GET http://localhost:3000/v1/characters HTTP/1.1
 
+###
+GET http://localhost:3000/v1/characters/69b1e887-0202-4f31-8866-c36133db3afa HTTP/1.1
+
 
 ###
 POST http://localhost:3000/v1/characters HTTP/1.1
@@ -92,9 +95,6 @@ Content-Type: application/json
 }
 
 
-###
-GET http://localhost:3000/v1/characters/69b1e887-0202-4f31-8866-c36133db3afa HTTP/1.1
-
 
 ###
 PUT http://localhost:3000/v1/characters/69b1e887-0202-4f31-8866-c36133db3afa HTTP/1.1
@@ -109,3 +109,6 @@ Content-Type: application/json
   "role":"main protagonist",
   "episodes":22
 }
+
+###
+DELETE http://localhost:3000/v1/characters/69b1e887-0202-4f31-8866-c36133db3afa  HTTP/1.1
