@@ -1,12 +1,12 @@
 ###
-POST http://localhost:3000/api/v1/products HTTP/1.1
+POST http://localhost:3000/v1/products HTTP/1.1
 Content-Type: application/json
 
 {
-  "title":"Pokemon Yellow Version - Special Pikachu Edition (Renewed)",
-  "description":"The plot of Yellow is very similar to that of the Japanese Red and Green and Japanese Blue...",
-  "price":135,
-  "Available_Units":5,
+  "title":"Pokémon Shining Pearl",
+  "description":"Revisit the Sinnoh region from the original Pokémon Pearl Version game and set off to try and become the Champion of the Pokémon League.",
+  "price":41.99,
+  "Available_Units":50,
   "category":"Video Games"
 }
 
@@ -52,7 +52,7 @@ Content-Type: application/json
 
 
 ###
-GET http://localhost:3000/v1/users/1 HTTP/1.1
+GET http://localhost:3000/v1/users/2 HTTP/1.1
 
 ###
 PUT http://localhost:3000/v1/users/3 HTTP/1.1

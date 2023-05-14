@@ -84,3 +84,5 @@
 20230510	11:59:47	7690087d-1d97-41cb-ada6-ad96d558d80e	SequelizeDatabaseError: el valor nulo en la columna «id» de la relación «characters» viola la restricción de no nulo
 20230510	12:00:32	1de78b99-6f36-49f3-9e26-5ebd72a85566	SyntaxError: Unexpected string in JSON at position 15
 20230510	12:02:27	a32a8969-faa4-4443-8bd7-77ac614d95a2	SequelizeDatabaseError: el valor nulo en la columna «id» de la relación «characters» viola la restricción de no nulo
+20230514	12:32:47	7b16e840-6297-407e-a717-660c792e5d4b	SyntaxError: Unexpected token , in JSON at position 200
+20230514	12:33:32	2c0e1099-b255-40cc-a40a-1d00fa8791bc	SyntaxError: Unexpected token , in JSON at position 200

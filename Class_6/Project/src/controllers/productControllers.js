@@ -1,16 +1,8 @@
 const { Product } = require('../models');
-const Joi = require('Joi');
-
-const schemaCustom = Joi.object({
-  title: Joi.string().min(3).max(100).required(),
-  description: Joi.string().min(10).max(1000).required(),
-  price: Joi.number().min(1).max(1000).required(),
-  Available_Units: Joi.number().min(1).max(1000).required(),
-  category: Joi.string().min(5).max(15).required(),
-});
+const { productSchema } = require('../Schema/productSchema');
 
 const createProduct = async (req, res) => {
-  const result = schemaCustom.validate(req.body);
+  const result = productSchema.validate(req.body);
   if (result.error) {
     return res.status(400).send(result.error);
   }
@@ -32,7 +24,7 @@ const getProductById = async (req, res) => {
 
 const updateProduct = async (req, res) => {
   const { id } = req.params;
-  const result = schemaCustom.validate(req.body);
+  const result = productSchema.validate(req.body);
   if (result.error) {
     return res.status(400).send(result.error);
   }

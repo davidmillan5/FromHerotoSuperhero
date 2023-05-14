@@ -1,16 +1,6 @@
 const { Character } = require('../models');
-const Joi = require('Joi');
 const crypto = require('crypto');
-
-const schemaCustom = Joi.object({
-  fullname: Joi.string().min(4).max(100).required(),
-  serie: Joi.string().min(4).max(1000).required(),
-  studio: Joi.string().min(10).max(1000).required(),
-  author: Joi.string().min(1).max(10000).required(),
-  firstappearance: Joi.date().required(),
-  role: Joi.string().min(1).max(1000).required(),
-  episodes: Joi.number().min(1).max(1000).required(),
-});
+const { characterSchema } = require('../Schema/characterSchema');
 
 exports.getAllCharacters = async (req, res, next) => {
   const { offset, limit } = req.query;
@@ -26,7 +16,7 @@ exports.getAllCharacters = async (req, res, next) => {
 };
 
 exports.createCharacter = async (req, res, next) => {
-  const result = await schemaCustom.validate(req.body);
+  const result = await characterSchema.validate(req.body);
   if (result.error) {
     return res.status(400).send(result.error);
   }
@@ -59,6 +49,10 @@ exports.getCharacterById = async (req, res, next) => {
 
 exports.updateCharacterById = async (req, res, next) => {
   const { id } = req.params;
+  const result = characterSchema.validate(req.body);
+  if (result.error) {
+    return res.status(400).send(result.error);
+  }
   try {
     const character = await Character.update(req.body, {
       returning: true,
