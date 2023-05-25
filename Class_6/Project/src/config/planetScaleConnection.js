@@ -1,12 +1,13 @@
+require('dotenv').config();
 const Sequelize = require('sequelize');
 const { DataTypes } = require('sequelize');
 
 const sequelize = new Sequelize(
-  'tutorial',
-  'odcfuque4jd2i3okclkg',
-  'pscale_pw_Le8CdbCNhkdxP475dXrkaCi0lecx9z7gla6Yskgkd5H',
+  process.env.DATABASE_NAME,
+  process.env.DATABASE_USERNAME,
+  process.env.DATABASE_PASSWORD,
   {
-    host: 'aws.connect.psdb.cloud',
+    host: process.env.DATABASE_HOST_NAME,
     dialect: 'mysql',
     dialectOptions: {
       ssl: {
