@@ -8,6 +8,9 @@ const PORT = process.env.PORT || 3000,
   mongoose = require('mongoose');
 const sequelize = require('./utils/postgresql');
 
+// PlanetScale Cloud Connection
+const planetScale = require('./config/planetScaleConnection');
+
 // Local Postgres Connection
 const db = require('./config/localConnection');
 
@@ -38,6 +41,8 @@ const start = async () => {
     await sequelize.authenticate();
     await db.sync();
     await db.authenticate();
+    await planetScale.sync();
+    await planetScale.authenticate();
 
     app.listen(PORT, () => {
       console.log(`Server started on port ${PORT}...`);
