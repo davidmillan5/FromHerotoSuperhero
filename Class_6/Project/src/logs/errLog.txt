@@ -86,3 +86,4 @@
 20230510	12:02:27	a32a8969-faa4-4443-8bd7-77ac614d95a2	SequelizeDatabaseError: el valor nulo en la columna «id» de la relación «characters» viola la restricción de no nulo
 20230514	12:32:47	7b16e840-6297-407e-a717-660c792e5d4b	SyntaxError: Unexpected token , in JSON at position 200
 20230514	12:33:32	2c0e1099-b255-40cc-a40a-1d00fa8791bc	SyntaxError: Unexpected token , in JSON at position 200
+20230525	21:00:15	2520d213-f1ab-4d86-9eb4-125ba96429ed	ReferenceError: email is not defined
