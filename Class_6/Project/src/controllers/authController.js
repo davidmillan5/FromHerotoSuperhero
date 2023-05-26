@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-const userLogin = (req, res) => {
+exports.login = (req, res) => {
   const { email } = req.body;
 
   token = jwt.sign({ email: email }, process.env.JWT_SECRET_KEY, {
