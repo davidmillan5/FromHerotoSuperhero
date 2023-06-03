@@ -328,3 +328,8 @@
 20230525	21:05:07	01f00240-e3d7-4291-b365-448a0c4df35e	POST	undefined	/login/2
 20230525	21:05:28	dbf73149-dd2c-464a-8e7a-4c5ef9d6d0da	POST	undefined	/login/2&textmessage
 20230525	21:05:40	e5ee6fb5-443d-46df-9939-b1b2a2afe929	GET	undefined	/auth/confidential
+20230603	10:45:55	05595f5a-3c73-44e3-9692-98a510757a8f	POST	undefined	/v1/products
+20230603	10:54:06	264f74db-4653-4dd8-9764-3a8e4939858b	POST	undefined	/v1/users
+20230603	10:54:21	0ee34fcf-d0a9-408a-977c-75c359d8aa85	POST	undefined	/v1/characters
+20230603	10:54:30	d8ac9368-5aad-4643-9841-513ba12e2da0	POST	undefined	/v1/videogames
+20230603	11:00:54	5885509d-ac6b-4723-a468-96c9e3b93604	POST	undefined	/v1/products

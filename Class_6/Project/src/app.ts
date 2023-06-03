@@ -1,12 +1,14 @@
-require('dotenv').config();
+import { config } from 'dotenv';
 
-const PORT = process.env.PORT || 3000,
-  express = require('express'),
-  app = express(),
-  { logger } = require('./middleware/logEvents'),
-  errorHandler = require('./middleware/errorHandler'),
-  mongoose = require('mongoose');
+const PORT = process.env.PORT || 3000;
+import express from 'express';
+const app = express();
+import { logger } from './middleware/logEvents';
+import { errorHandler } from './middleware/errorHandler';
+import mongoose from 'mongoose';
 const sequelize = require('./utils/postgresql');
+
+config();
 
 // PlanetScale Cloud Connection
 const planetScale = require('./config/planetScaleConnection');
@@ -32,10 +34,11 @@ app.use(errorHandler);
 
 const start = async () => {
   try {
-    await mongoose.connect(process.env.MONGODB_CONNECTION, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    if (!process.env.MONGODB_CONNECTION) {
+      throw new Error('mongo url not defined');
+    }
+    const conn = await mongoose.connect(process.env.MONGODB_CONNECTION);
+    console.log(`MongoDb connected: ${conn.connection.host}`);
 
     await sequelize.sync();
     await sequelize.authenticate();

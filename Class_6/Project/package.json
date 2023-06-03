@@ -4,9 +4,10 @@
   "description": "API with Postgresql",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js"
+    "build": "rimraf ./build && tsc",
+    "start": "npm run build && node -r dotenv/config build/app.js",
+    "dev": "npx nodemon -r dotenv/config",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "Relational Databases",
@@ -21,7 +22,6 @@
   "dependencies": {
     "@socket.io/redis-adapter": "^8.2.1",
     "@types/express": "^4.17.17",
-    "@types/node": "^18.15.13",
     "date-fns": "^2.29.3",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
@@ -37,12 +37,15 @@
     "sequelize": "^6.31.1",
     "socket.io": "^4.6.1",
     "sqlite3": "^5.1.6",
-    "typescript": "^5.0.4",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@types/node": "^20.2.5",
     "nodemon": "^2.0.22",
-    "sequelize-cli": "^6.6.0"
+    "rimraf": "^5.0.1",
+    "sequelize-cli": "^6.6.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.3"
   },
   "directories": {
     "doc": "docs"
